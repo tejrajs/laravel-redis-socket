@@ -8,6 +8,21 @@
 </p>
 
 ## About Laravel Redis Socket
+```
+composer install
+```
+
+```
+php artisan migrate
+```
+
+```
+npm install
+```
+
+```
+npm run dev
+```
 
 ###Redis
 https://redis.io/
@@ -30,3 +45,5 @@ https://laravel.com/docs/7.x/broadcasting
 ```
 php artisan queue:work
 ```
+
+
