@@ -30,8 +30,8 @@
         mounted() {
             console.log('Component mounted :'+this.id)
 
-            let channel = Echo.private('user.'+this.id);
-            channel.listen('.UserEvent', function (data){
+            let message = Echo.private('user.'+this.id);
+            message.listen('.UserEvent', function (data){
                 alert(data.message);
             });
         },
