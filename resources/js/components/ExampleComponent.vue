@@ -6,7 +6,9 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <input type="text" v-model="userId" placeholder="User ID">
+                        <input type="text" v-model="message" placeholder="Message">
+                        <button v-on:click.prevent="pingUser" >ping</button>
                     </div>
                 </div>
             </div>
@@ -19,13 +21,24 @@
         props: [
             'id'
         ],
+        data() {
+            return {
+                userId: null,
+                message: ""
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted :'+this.id)
 
             let channel = Echo.private('user.'+this.id);
             channel.listen('.UserEvent', function (data){
-                console.log(data);
+                alert(data.message);
             });
+        },
+        methods: {
+            pingUser(){
+                window.axios.post('/ping', {user_id:this.userId, message:this.message});
+            }
         }
     }
 </script>

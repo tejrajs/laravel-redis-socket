@@ -17,15 +17,19 @@ class UserEvent implements ShouldBroadcast
 
     public $user;
 
+    public $message;
+
     /**
      * Create a new event instance.
      *
      * @param User $user
+     * @param $message
      */
-    public function __construct(User $user)
+    public function __construct(User $user, $message)
     {
         //
         $this->user = $user;
+        $this->message = $message;
     }
 
     /**
@@ -44,7 +48,8 @@ class UserEvent implements ShouldBroadcast
 
     public function broadcastWith(){
         return [
-            'user' => $this->user
+            'user' => $this->user,
+            'message' => $this->message
         ];
     }
 }

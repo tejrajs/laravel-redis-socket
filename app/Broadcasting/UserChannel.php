@@ -26,6 +26,6 @@ class UserChannel
     public function join(User $user, User $userClient)
     {
         //
-        return $user->id = $userClient;
+        return $user->id === $userClient->id;
     }
 }

@@ -25,3 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', function () {
     event(new \App\Events\UserEvent(\App\User::first()));
 });
+
+Route::post('/ping', function (\Illuminate\Http\Request $request) {
+    $user = \App\User::find($request->user_id);
+    $message = $request->message;
+    if(!empty($user))
+    event(new \App\Events\UserEvent($user, $message));
+});
